@@ -24,3 +24,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	if !is_on_wall():
+		pass
+	elif direction == 1:
+		direction = -1
+	elif direction == -1:
+		direction = 1
