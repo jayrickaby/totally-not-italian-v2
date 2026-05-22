@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var snd_jump: AudioStreamPlayer2D = $snd_jump
 
-const SPEED = 10.0
+const SPEED = 50.0
 const JUMP_VELOCITY = -300.0
 
 
@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	# Add animation
 	if not is_on_floor():
 		animated_sprite_2d.animation = "jump"
-	elif velocity.x != 0:
+	elif velocity.x > 1 or velocity.x < -1:
 		animated_sprite_2d.animation = "walk"
 		animated_sprite_2d.flip_h = (direction == -1)
 	else:
