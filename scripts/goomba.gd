@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var goomba: CharacterBody2D = $"."
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-
 const SPEED = 20.0
 var direction := -1
 
@@ -25,9 +24,5 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	if !is_on_wall():
-		pass
-	elif direction == 1:
-		direction = -1
-	elif direction == -1:
-		direction = 1
+	if is_on_wall():
+		direction *= -1
