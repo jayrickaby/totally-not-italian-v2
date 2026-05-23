@@ -60,16 +60,21 @@ frame_progress = 0.6770511
 visible = false
 shape = SubResource("CircleShape2D_3hfl1")
 
-[node name="externalHitboxes" type="Area2D" parent="." unique_id=103488973]
+[node name="hurtArea" type="Area2D" parent="." unique_id=103488973]
 collision_layer = 4
 collision_mask = 2
 
-[node name="hurtArea" type="CollisionShape2D" parent="externalHitboxes" unique_id=1918724991]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1918724991]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_s1jgw")
 
-[node name="stompArea" type="CollisionShape2D" parent="externalHitboxes" unique_id=1174874935]
+[node name="stompArea" type="Area2D" parent="." unique_id=613148146]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1950733982]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_fgpj4")
 
-[connection signal="body_entered" from="externalHitboxes" to="." method="_on_external_hitboxes_body_entered"]
+[connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]
+[connection signal="body_entered" from="stompArea" to="." method="_on_stomp_area_entered"]
