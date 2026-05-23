@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bobsku5p63l4c" path="res://assets/textures/tilesets/dev_white.png" id="1_sjb42"]
 [ext_resource type="PackedScene" uid="uid://b2qfao7fn373c" path="res://scenes/player.tscn" id="2_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://p6us43k1j2ua" path="res://scenes/goomba.tscn" id="3_b3oru"]
+[ext_resource type="PackedScene" uid="uid://e0wyegifgus0" path="res://scenes/key.tscn" id="4_ua5ty"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdtm5"]
 texture = ExtResource("1_sjb42")
@@ -42,3 +43,6 @@ position = Vector2(5, -11)
 
 [node name="Goomba" parent="Enemies" unique_id=1447049190 instance=ExtResource("3_b3oru")]
 position = Vector2(208, -8)
+
+[node name="Key" parent="." unique_id=810182334 instance=ExtResource("4_ua5ty")]
+position = Vector2(280, -128)
