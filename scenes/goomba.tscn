@@ -41,7 +41,7 @@ animations = [{
 radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1jgw"]
-size = Vector2(16, 8)
+size = Vector2(10, 8)
 
 [node name="Goomba" type="CharacterBody2D" unique_id=1232104842]
 collision_layer = 4
