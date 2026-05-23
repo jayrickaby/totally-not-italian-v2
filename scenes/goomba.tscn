@@ -7,6 +7,10 @@
 atlas = ExtResource("1_21hcc")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lml2"]
+atlas = ExtResource("1_21hcc")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgpj4"]
 atlas = ExtResource("1_21hcc")
 region = Rect2(16, 0, 16, 16)
@@ -24,6 +28,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lml2")
+}],
+"loop": true,
+"name": &"stomped",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -52,9 +64,9 @@ script = ExtResource("1_s1jgw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1872486879]
 sprite_frames = SubResource("SpriteFrames_5lml2")
-animation = &"idle"
+animation = &"stomped"
 autoplay = "idle"
-frame_progress = 0.6770511
+frame_progress = 0.62793094
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648754468]
 visible = false
@@ -76,5 +88,6 @@ collision_mask = 2
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_fgpj4")
 
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]
 [connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]
 [connection signal="body_entered" from="stompArea" to="." method="_on_stomp_area_entered"]
