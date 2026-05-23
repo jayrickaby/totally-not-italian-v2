@@ -18,5 +18,4 @@ func _setup_level() -> void:
 			enemy.player_died.connect(_on_player_died)
 			
 func _on_player_died(body) -> void:
-	print(body)
-	print("Player killed")
+	body.die()

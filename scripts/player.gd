@@ -5,8 +5,13 @@ extends CharacterBody2D
 const SPEED = 50.0
 const JUMP_VELOCITY = -300.0
 
+var alive = true;
+
 
 func _physics_process(delta: float) -> void:
+	if !alive:
+		return
+	
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")
 	
@@ -34,3 +39,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+func die() -> void:
+	alive = false;

@@ -31,5 +31,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_external_hitboxes_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" && body.alive:
 		emit_signal("player_died", body)
