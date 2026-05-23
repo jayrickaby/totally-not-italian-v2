@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var goomba: CharacterBody2D = $"."
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+signal player_died
+
 const SPEED = 20.0
 var direction := -1
 
@@ -26,3 +28,8 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_wall():
 		direction *= -1
+
+
+func _on_external_hitboxes_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		emit_signal("player_died", body)
