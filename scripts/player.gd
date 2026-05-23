@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var snd_jump: AudioStreamPlayer2D = $snd_jump
 
 const SPEED = 50.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -250.0
 
 var alive = true;
 
