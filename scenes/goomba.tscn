@@ -49,14 +49,14 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3hfl1"]
-radius = 8.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1jgw"]
 size = Vector2(10, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgpj4"]
 size = Vector2(14, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hfl1"]
+radius = 8.0
 
 [node name="Goomba" type="CharacterBody2D" unique_id=1232104842]
 collision_layer = 4
@@ -67,10 +67,6 @@ sprite_frames = SubResource("SpriteFrames_5lml2")
 animation = &"stomped"
 autoplay = "idle"
 frame_progress = 0.62793094
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1648754468]
-visible = false
-shape = SubResource("CircleShape2D_3hfl1")
 
 [node name="hurtArea" type="Area2D" parent="." unique_id=103488973]
 collision_layer = 4
@@ -87,6 +83,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1950733982]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_fgpj4")
+
+[node name="collisionArea" type="CollisionShape2D" parent="." unique_id=1648754468]
+visible = false
+shape = SubResource("CircleShape2D_3hfl1")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]
 [connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]

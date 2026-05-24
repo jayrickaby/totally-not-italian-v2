@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://bp340mqj851uq" path="res://scripts/key.gd" id="1_fttkb"]
 [ext_resource type="Texture2D" uid="uid://c1htjhkvvgf25" path="res://assets/textures/items/key.png" id="1_yk2u2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fttkb"]
-size = Vector2(16, 16)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_wy8tx"]
 radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fttkb"]
+size = Vector2(16, 16)
 
 [node name="Key" type="CharacterBody2D" unique_id=810182334]
 collision_layer = 0
@@ -16,14 +16,14 @@ script = ExtResource("1_fttkb")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=141660910]
 texture = ExtResource("1_yk2u2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1704385120]
-shape = SubResource("RectangleShape2D_fttkb")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=775794011]
+[node name="collectArea" type="Area2D" parent="." unique_id=775794011]
 collision_layer = 8
 collision_mask = 6
 
-[node name="collectArea" type="CollisionShape2D" parent="Area2D" unique_id=1705570506]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collectArea" unique_id=1705570506]
 shape = SubResource("CircleShape2D_wy8tx")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_collect_area_entered"]
+[node name="collisionArea" type="CollisionShape2D" parent="." unique_id=1704385120]
+shape = SubResource("RectangleShape2D_fttkb")
+
+[connection signal="body_entered" from="collectArea" to="." method="_on_collect_area_entered"]

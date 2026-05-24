@@ -72,9 +72,9 @@ sprite_frames = SubResource("SpriteFrames_kdubu")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=207601354]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_g2els")
-
 [node name="snd_jump" type="AudioStreamPlayer2D" parent="." unique_id=275780826]
 stream = ExtResource("3_qhqgy")
+
+[node name="collisionArea" type="CollisionShape2D" parent="." unique_id=207601354]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_g2els")
