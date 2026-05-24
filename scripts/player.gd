@@ -7,7 +7,6 @@ const JUMP_VELOCITY = -250.0
 
 var alive = true;
 
-
 func _physics_process(delta: float) -> void:
 	if !alive:
 		return
