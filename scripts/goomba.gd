@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 signal player_damaged
+signal stomped_by_player
 
 const SPEED = 20.0
 var direction = -1
@@ -36,10 +37,10 @@ func _on_hurt_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && alive):
 		emit_signal("player_damaged", body)
 
-
 func _on_stomp_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && !body.is_on_floor() && alive):
 		stomp()
+		emit_signal("stomped_by_player", body)
 		
 func stomp() -> void:
 	alive = false;
