@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://x40g1dntin72"]
+
+[ext_resource type="Texture2D" uid="uid://k78b8xuvi1fs" path="res://assets/textures/objects/door.png" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://cynebtwqh873o" path="res://scenes/door.gd" id="1_uvdjg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpvv5"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvdjg"]
+size = Vector2(16, 32)
+
+[node name="Door" type="Node2D" unique_id=445569738]
+script = ExtResource("1_uvdjg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=626095822]
+texture = ExtResource("1_hpvv5")
+
+[node name="detectionArea" type="Area2D" parent="." unique_id=1874889844]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea" unique_id=555595721]
+shape = SubResource("RectangleShape2D_hpvv5")
+
+[node name="physicsArea" type="StaticBody2D" parent="." unique_id=1563607074]
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="physicsArea" unique_id=138485557]
+shape = SubResource("RectangleShape2D_uvdjg")
+
+[connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_entered"]

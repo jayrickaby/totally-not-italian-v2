@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -250.0
+var keys = []
 
 var alive = true;
 
