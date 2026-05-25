@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d2yanbv1o2dx1" path="res://assets/textures/characters/enemies/sheet_goomba.png" id="1_21hcc"]
 [ext_resource type="Script" uid="uid://dwpx12xi4tb1p" path="res://scripts/goomba.gd" id="1_s1jgw"]
+[ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="3_fgpj4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1jgw"]
 atlas = ExtResource("1_21hcc")
@@ -84,8 +85,10 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_fgpj4")
 
 [node name="collisionArea" type="CollisionShape2D" parent="." unique_id=1648754468]
-visible = false
 shape = SubResource("CircleShape2D_3hfl1")
+
+[node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_fgpj4")]
+flipOnWall = true
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]
 [connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]

@@ -2,36 +2,30 @@ extends CharacterBody2D
 
 @onready var goomba: CharacterBody2D = $"."
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var basic_move_component: Node = $BasicMoveComponent
 
 signal player_damaged
 signal stomped_by_player
 
-const SPEED = 20.0
-var direction = -1
 var alive = true;
+
+func _ready() -> void:
+	basic_move_component.direction_changed.connect(_change_direction)
 
 func _physics_process(delta: float) -> void:	
 	if !alive:
 		return
-			
+	
+	basic_move_component.tick(self, delta)
+				
 	if velocity.x > 1 or velocity.x < -1:
 		animated_sprite_2d.animation = "walk"
-		animated_sprite_2d.flip_h = (direction == -1)
 	else:
 		animated_sprite_2d.animation = "idle"
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+func _change_direction(direction: int) -> void:
+	animated_sprite_2d.flip_h = (direction == -1)
 
-	move_and_slide()
-	
-	if is_on_wall():
-		direction *= -1
 
 func _on_hurt_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && alive):
