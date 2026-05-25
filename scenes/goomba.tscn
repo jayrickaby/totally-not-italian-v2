@@ -64,9 +64,8 @@ script = ExtResource("1_s1jgw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1872486879]
 sprite_frames = SubResource("SpriteFrames_5lml2")
-animation = &"stomped"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.62793094
 
 [node name="hurtArea" type="Area2D" parent="." unique_id=103488973]
 collision_layer = 4

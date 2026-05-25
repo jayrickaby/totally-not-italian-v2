@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://n2h1ito80sbv"]
+
+[ext_resource type="Texture2D" uid="uid://bc1xdfinjgqgy" path="res://assets/textures/characters/enemies/sheet_koopa.png" id="1_e5i7p"]
+[ext_resource type="Script" uid="uid://c1frejc5r363t" path="res://scripts/koopa_shelled.gd" id="1_gkh4f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkh4f"]
+atlas = ExtResource("1_e5i7p")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_311ub"]
+atlas = ExtResource("1_e5i7p")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccsrb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkh4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_311ub")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5i7p"]
+size = Vector2(16, 32)
+
+[node name="Koopa Shelled" type="CharacterBody2D" unique_id=559945683]
+collision_layer = 4
+script = ExtResource("1_gkh4f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2077530489]
+sprite_frames = SubResource("SpriteFrames_ccsrb")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.94575036
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417253755]
+shape = SubResource("RectangleShape2D_e5i7p")
