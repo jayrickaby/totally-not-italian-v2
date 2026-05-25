@@ -6,7 +6,22 @@ var direction = 0
 
 @export var id: String = ""
 
+static var keyIds = []
+
 signal collected_by_player
+
+func _ready() -> void:
+	if !get_parent().name == "Keys":
+		print("Key in invalid space!")
+		call_deferred("destroy")
+		
+	if keyIds.has(id):
+		print("Duplicate Key '" + id + "'")
+		call_deferred("destroy")
+	else:
+		keyIds.append(id)
+	
+		
 
 func _physics_process(delta: float) -> void:
 	

@@ -18,9 +18,10 @@ func _setup_level() -> void:
 			enemy.player_damaged.connect(_on_player_damaged)
 			enemy.stomped_by_player.connect(_on_player_stomp_goomba)
 			
-	var key = $level.get_node_or_null("Key")
-	if key:
-		key.collected_by_player.connect(_key_collected_by_player)
+	var keys = $level.get_node_or_null("Keys")#
+	if keys:
+		for key in keys.get_children():
+			key.collected_by_player.connect(_key_collected_by_player)
 			
 func _on_player_damaged(body) -> void:
 	body.die()

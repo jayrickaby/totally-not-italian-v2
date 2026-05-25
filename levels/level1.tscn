@@ -45,10 +45,16 @@ position = Vector2(5, -11)
 [node name="Goomba" parent="Enemies" unique_id=1447049190 instance=ExtResource("3_b3oru")]
 position = Vector2(208, -8)
 
-[node name="Key" parent="." unique_id=810182334 instance=ExtResource("4_ua5ty")]
-position = Vector2(72, -192)
-id = "escape"
-
 [node name="Door" parent="." unique_id=445569738 instance=ExtResource("5_61w3m")]
 position = Vector2(144, -32)
 linkKeyId = "escape"
+
+[node name="Keys" type="Node2D" parent="." unique_id=437584801]
+
+[node name="escape_key" parent="Keys" unique_id=810182334 instance=ExtResource("4_ua5ty")]
+position = Vector2(72, -192)
+id = "escape"
+
+[node name="escape_key_dupe" parent="Keys" unique_id=800875864 instance=ExtResource("4_ua5ty")]
+position = Vector2(120, -96)
+id = "escape"
