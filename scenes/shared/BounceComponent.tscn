@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ds4fylafrycka"]
+
+[ext_resource type="Script" uid="uid://cydykqurua6se" path="res://scripts/shared/bounce_component.gd" id="1_7owb7"]
+
+[node name="BounceComponent" type="Node" unique_id=1467835390]
+script = ExtResource("1_7owb7")

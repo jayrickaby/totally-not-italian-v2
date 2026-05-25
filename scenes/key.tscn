@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp340mqj851uq" path="res://scripts/key.gd" id="1_fttkb"]
 [ext_resource type="Texture2D" uid="uid://c1htjhkvvgf25" path="res://assets/textures/items/key.png" id="1_yk2u2"]
+[ext_resource type="PackedScene" uid="uid://ds4fylafrycka" path="res://scenes/shared/BounceComponent.tscn" id="3_wy8tx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wy8tx"]
 radius = 12.0
@@ -25,5 +26,9 @@ shape = SubResource("CircleShape2D_wy8tx")
 
 [node name="collisionArea" type="CollisionShape2D" parent="." unique_id=1704385120]
 shape = SubResource("RectangleShape2D_fttkb")
+
+[node name="BounceComponent" parent="." unique_id=1467835390 instance=ExtResource("3_wy8tx")]
+BOUNCE_VELOCITY = 400.0
+BOUNCE_FALLOFF = 1.0
 
 [connection signal="body_entered" from="collectArea" to="." method="_on_collect_area_entered"]
