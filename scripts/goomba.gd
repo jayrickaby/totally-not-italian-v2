@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 func _change_direction(direction: int) -> void:
 	animated_sprite_2d.flip_h = (direction == -1)
 
-
 func _on_hurt_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && alive):
 		emit_signal("player_damaged", body)
