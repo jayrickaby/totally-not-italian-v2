@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var basic_move_component: Node = $BasicMoveComponent
-@onready var stompable_component: Node = $StompableComponent
+@onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
+@onready var stompable_component: StompableComponent = $StompableComponent
 
 signal damage_to_player
 

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var direction = 0
-@onready var bounce_component: Node = $BounceComponent
+@onready var bounce_component: BounceComponent = $BounceComponent
 
 @export var id: String = ""
 

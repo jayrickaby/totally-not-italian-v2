@@ -1,3 +1,4 @@
+class_name BasicMoveComponent
 extends Node
 
 enum directions {LEFT, RIGHT}

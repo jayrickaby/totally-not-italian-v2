@@ -1,4 +1,6 @@
+class_name BounceComponent
 extends Node
+
 @export var BOUNCE_VELOCITY: float = 200
 @export var BOUNCE_CUTOFF: float = 25
 @export var BOUNCE_FALLOFF: float = 4

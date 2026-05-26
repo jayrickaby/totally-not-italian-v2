@@ -1,3 +1,4 @@
+class_name StompableComponent
 extends Node
 
 @export var stompArea: Area2D
