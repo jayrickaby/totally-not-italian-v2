@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var basic_move_component: Node = $BasicMoveComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-signal player_damaged
+signal damage_to_player	
 signal stomped_by_player
 
 func _ready() -> void:

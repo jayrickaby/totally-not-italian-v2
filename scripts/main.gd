@@ -15,7 +15,7 @@ func _setup_level() -> void:
 	var enemies = $level.get_node_or_null("Enemies")
 	if enemies:
 		for enemy in enemies.get_children():
-			enemy.player_damaged.connect(_on_player_damaged)
+			enemy.damage_to_player.connect(_on_player_damaged)
 			enemy.stomped_by_player.connect(_on_player_stomp_goomba)
 			
 	var keys = $level.get_node_or_null("Keys")#
