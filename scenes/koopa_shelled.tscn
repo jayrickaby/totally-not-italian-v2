@@ -30,6 +30,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5i7p"]
 size = Vector2(16, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccsrb"]
+size = Vector2(16, 17)
+
 [node name="Koopa Shelled" type="CharacterBody2D" unique_id=559945683]
 collision_layer = 4
 script = ExtResource("1_gkh4f")
@@ -47,4 +50,13 @@ shape = SubResource("RectangleShape2D_e5i7p")
 flipOnWall = true
 speed = 20.0
 
-[node name="StompableComponent" parent="." unique_id=417670950 instance=ExtResource("4_ccsrb")]
+[node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_ccsrb")]
+stompArea = NodePath("../stompArea")
+
+[node name="stompArea" type="Area2D" parent="." unique_id=1151430489]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1357631889]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_ccsrb")
