@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d03tffiiyyx8a"]
+
+[ext_resource type="Script" uid="uid://bj3uswpy6m48a" path="res://scripts/shared/stompable_component.gd" id="1_4lihp"]
+
+[node name="StompableComponent" type="Node" unique_id=417670950]
+script = ExtResource("1_4lihp")

@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-@onready var goomba: CharacterBody2D = $"."
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basic_move_component: Node = $BasicMoveComponent
+@onready var stompable_component: Node = $StompableComponent
 
 signal damage_to_player
-signal stomped_by_player
 
 var alive = true;
 
 func _ready() -> void:
 	basic_move_component.direction_changed.connect(_change_direction)
+	stompable_component.stomped_by_player.connect(_stomp)
 
 func _physics_process(delta: float) -> void:	
 	if !alive:
@@ -29,13 +29,8 @@ func _change_direction(direction: int) -> void:
 func _on_hurt_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && alive):
 		emit_signal("damage_to_player", body)
-
-func _on_stomp_area_entered(body: Node2D) -> void:
-	if (body.name == "Player" && body.alive && !body.is_on_floor() && alive):
-		stomp()
-		emit_signal("stomped_by_player", body)
 		
-func stomp() -> void:
+func _stomp() -> void:
 	alive = false;
 	animated_sprite_2d.animation = "stomped"
 
