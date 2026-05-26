@@ -41,7 +41,7 @@ script = ExtResource("1_gkh4f")
 sprite_frames = SubResource("SpriteFrames_ccsrb")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.94575036
+frame_progress = 0.5015039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417253755]
 shape = SubResource("RectangleShape2D_e5i7p")

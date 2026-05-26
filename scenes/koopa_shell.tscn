@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://d2sw6xuqquagv"]
+
+[ext_resource type="Script" uid="uid://cwxejtqpy8u5o" path="res://scripts/koopa_shell.gd" id="1_eepnn"]
+[ext_resource type="Texture2D" uid="uid://bc1xdfinjgqgy" path="res://assets/textures/characters/enemies/sheet_koopa.png" id="1_tassc"]
+[ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="3_u5ec0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qukh7"]
+atlas = ExtResource("1_tassc")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eepnn"]
+atlas = ExtResource("1_tassc")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5ec0"]
+atlas = ExtResource("1_tassc")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix520"]
+atlas = ExtResource("1_tassc")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54cmn"]
+atlas = ExtResource("1_tassc")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fepgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qukh7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eepnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5ec0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix520")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54cmn")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tassc"]
+size = Vector2(16, 16)
+
+[node name="Koopa Shell" type="CharacterBody2D" unique_id=937446504]
+collision_layer = 4
+script = ExtResource("1_eepnn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=641510188]
+sprite_frames = SubResource("SpriteFrames_fepgr")
+animation = &"spin"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=745144833]
+shape = SubResource("RectangleShape2D_tassc")
+
+[node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_u5ec0")]
+flipOnWall = true
+speed = 150.0

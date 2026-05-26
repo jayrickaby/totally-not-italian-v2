@@ -31,3 +31,4 @@ func tick(parent: CharacterBody2D, delta: float) -> void:
 	if parent.is_on_wall() && flipOnWall:
 		direction *= -1
 		emit_signal("direction_changed", direction)
+	

@@ -4,9 +4,11 @@ extends CharacterBody2D
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
 @onready var stompable_component: StompableComponent = $StompableComponent
 
-signal damage_to_player	
+@export var shell_scene: PackedScene = preload("res://scenes/koopa_shell.tscn")
 
 var alive = true
+
+signal damage_to_player
 
 func _ready() -> void:
 	basic_move_component.direction_changed.connect(_change_direction)
