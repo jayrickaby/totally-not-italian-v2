@@ -68,5 +68,6 @@ autoplay = "idle"
 shape = SubResource("RectangleShape2D_tassc")
 
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_u5ec0")]
+initialDirection = 2
 flipOnWall = true
 speed = 150.0
