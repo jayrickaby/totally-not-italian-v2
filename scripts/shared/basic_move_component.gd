@@ -8,7 +8,7 @@ enum Directions {
 }
 
 @export var initialDirection: Directions = Directions.RIGHT
-@export var flipOnWall: bool = 0
+@export var flipOnWall: bool = false
 @export var gravityScale: float = 1
 @export var speed: float = 100
 var direction: int
