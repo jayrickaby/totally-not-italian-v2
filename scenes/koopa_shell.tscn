@@ -55,6 +55,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tassc"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eepnn"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ec0"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix520"]
+size = Vector2(14, 4)
+
 [node name="Koopa Shell" type="CharacterBody2D" unique_id=937446504]
 collision_layer = 4
 script = ExtResource("1_eepnn")
@@ -71,3 +80,27 @@ shape = SubResource("RectangleShape2D_tassc")
 initialDirection = 0
 flipOnWall = true
 speed = 150.0
+
+[node name="interactionArea" type="Area2D" parent="." unique_id=545468638]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactionArea" unique_id=829350535]
+shape = SubResource("RectangleShape2D_eepnn")
+
+[node name="hurtArea" type="Area2D" parent="." unique_id=1117366271]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1849280872]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_u5ec0")
+
+[node name="stompArea" type="Area2D" parent="." unique_id=293259619]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1015783627]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_ix520")
+
+[connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_entered"]
+[connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]
