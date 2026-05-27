@@ -52,6 +52,7 @@ position = Vector2(336, -16)
 
 [node name="Koopa Shell" parent="Enemies" unique_id=937446504 instance=ExtResource("7_8hd6v")]
 position = Vector2(88, -136)
+initiallySpinning = 1
 
 [node name="Door" parent="." unique_id=445569738 instance=ExtResource("5_61w3m")]
 position = Vector2(144, -32)
