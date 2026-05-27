@@ -1,14 +1,7 @@
-extends CharacterBody2D
+extends EnemyBase
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
 @onready var stompable_component: StompableComponent = $StompableComponent
-
-@export var shell_scene: PackedScene = preload("res://scenes/koopa_shell.tscn")
-
-var alive = true
-
-signal damage_to_player
 
 func _ready() -> void:
 	basic_move_component.direction_changed.connect(_change_direction)
@@ -20,12 +13,6 @@ func _physics_process(delta: float) -> void:
 		
 	basic_move_component.tick(self, delta)
 
-func _change_direction(direction: int) -> void:
-	animated_sprite_2d.flip_h = (direction == -1)
-
 func _stomp() -> void:
 	alive = false
 	call_deferred("_die")
-
-func _die() -> void:
-	queue_free()

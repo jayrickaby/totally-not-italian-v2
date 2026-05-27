@@ -60,9 +60,10 @@ size = Vector2(14, 10)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3hfl1"]
 radius = 8.0
 
-[node name="Goomba" type="CharacterBody2D" unique_id=1232104842]
+[node name="Goomba" type="CharacterBody2D" unique_id=1232104842 node_paths=PackedStringArray("hurt_area")]
 collision_layer = 4
 script = ExtResource("1_s1jgw")
+hurt_area = NodePath("hurtArea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1872486879]
 sprite_frames = SubResource("SpriteFrames_5lml2")
@@ -96,5 +97,4 @@ speed = 25.0
 stompArea = NodePath("../stompArea")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]
-[connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]
 [connection signal="body_entered" from="stompArea" to="." method="_on_stomp_area_entered"]
