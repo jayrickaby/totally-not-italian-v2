@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
+
 @export var initiallySpinning: BasicMoveComponent.Directions = BasicMoveComponent.Directions.NONE
 var isSpinning: bool = false
 
@@ -13,6 +15,11 @@ func _ready() -> void:
  
 func _physics_process(delta: float) -> void:
 	basic_move_component.tick(self, delta)
+	
+	if velocity.x > 1 or velocity.x < -1:
+		animated_sprite_2d.animation = "spin"
+	else:
+		animated_sprite_2d.animation = "idle"
 
 func _on_hurt_area_entered(body: Node2D) -> void:
 	if body.name == "Player" and body.alive and isSpinning:
@@ -22,3 +29,4 @@ func _on_hurt_area_entered(body: Node2D) -> void:
 func _on_interaction_area_entered(body: Node2D) -> void:
 	if !(body.name == "Player" and body.alive) or isSpinning:
 		return
+	
