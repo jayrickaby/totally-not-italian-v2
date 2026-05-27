@@ -28,14 +28,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5i7p"]
-size = Vector2(16, 32)
+size = Vector2(16, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccsrb"]
-size = Vector2(16, 17)
+size = Vector2(16, 6)
 
-[node name="Koopa Shelled" type="CharacterBody2D" unique_id=559945683]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqkje"]
+size = Vector2(12, 10)
+
+[node name="Koopa Shelled" type="CharacterBody2D" unique_id=559945683 node_paths=PackedStringArray("hurt_area")]
 collision_layer = 4
 script = ExtResource("1_gkh4f")
+hurt_area = NodePath("hurtArea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2077530489]
 sprite_frames = SubResource("SpriteFrames_ccsrb")
@@ -44,6 +48,7 @@ autoplay = "walk"
 frame_progress = 0.5015039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417253755]
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_e5i7p")
 
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_311ub")]
@@ -58,5 +63,11 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1357631889]
-position = Vector2(0, -2.5)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_ccsrb")
+
+[node name="hurtArea" type="Area2D" parent="." unique_id=63073550]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1361179926]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_kqkje")

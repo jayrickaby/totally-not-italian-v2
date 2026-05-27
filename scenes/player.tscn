@@ -57,9 +57,8 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
-radius = 6.0
-height = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(13, 21)
 
 [node name="Player" type="CharacterBody2D" unique_id=1492178481]
 collision_layer = 2
@@ -76,5 +75,5 @@ autoplay = "idle"
 stream = ExtResource("3_qhqgy")
 
 [node name="collisionArea" type="CollisionShape2D" parent="." unique_id=207601354]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_g2els")
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_qhqgy")
