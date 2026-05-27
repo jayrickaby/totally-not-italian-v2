@@ -13,6 +13,12 @@ func _physics_process(delta: float) -> void:
 		
 	basic_move_component.tick(self, delta)
 
-func _stomp() -> void:
+func _stomp(player: Node2D) -> void:
+	if !alive:
+		return
+		
 	alive = false
+	player.initiateJump()
 	call_deferred("_die")
+	
+	

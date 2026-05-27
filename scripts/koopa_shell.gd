@@ -3,12 +3,15 @@ extends EnemyBase
 const Directions = BasicMoveComponent.Directions
 
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
+@onready var stompable_component: StompableComponent = $StompableComponent
 
 @export var initiallySpinning: Directions = Directions.NONE
 var isSpinning: bool = false
 
 func _ready() -> void:
 	basic_move_component.setDirection(initiallySpinning)
+	stompable_component.stomped_by_player.connect(_stomp)
+	
 	if initiallySpinning != Directions.NONE:
 		isSpinning = true
  
@@ -34,3 +37,8 @@ func _startSpinning(spinDirection: Directions) -> void:
 	basic_move_component.setDirection(spinDirection)
 	isSpinning = true
 	
+func _stomp(player: Node2D) -> void:
+	if !alive:
+		return
+		
+	player.initiateJump()

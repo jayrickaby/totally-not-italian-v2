@@ -3,7 +3,7 @@ extends Node
 
 @export var stompArea: Area2D
 
-signal stomped_by_player
+signal stomped_by_player(player: Node2D)
 
 func _ready() -> void:
 	if stompArea:
@@ -11,4 +11,4 @@ func _ready() -> void:
 		
 func _on_stomp_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && !body.is_on_floor()):
-		emit_signal("stomped_by_player")
+		stomped_by_player.emit(body)

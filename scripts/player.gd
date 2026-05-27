@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and  is_on_floor():
 		_jump()
-		snd_jump.play()
 
 	if direction:
 		velocity.x = direction * SPEED
@@ -38,6 +37,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func initiateJump()	:
+	_jump()
+	snd_jump.play()
 	
 func _jump() -> void:
 	velocity.y = JUMP_VELOCITY	

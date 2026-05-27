@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwxejtqpy8u5o" path="res://scripts/koopa_shell.gd" id="1_eepnn"]
 [ext_resource type="Texture2D" uid="uid://bc1xdfinjgqgy" path="res://assets/textures/characters/enemies/sheet_koopa.png" id="1_tassc"]
 [ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="3_u5ec0"]
+[ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="4_u5ec0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qukh7"]
 atlas = ExtResource("1_tassc")
@@ -62,7 +63,7 @@ size = Vector2(16, 16)
 size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix520"]
-size = Vector2(14, 4)
+size = Vector2(18, 10)
 
 [node name="Koopa Shell" type="CharacterBody2D" unique_id=937446504 node_paths=PackedStringArray("hurt_area")]
 collision_layer = 4
@@ -82,6 +83,9 @@ initialDirection = 0
 flipOnWall = true
 speed = 150.0
 
+[node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_u5ec0")]
+stompArea = NodePath("../stompArea")
+
 [node name="interactionArea" type="Area2D" parent="." unique_id=545468638]
 collision_layer = 4
 collision_mask = 2
@@ -98,9 +102,11 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_u5ec0")
 
 [node name="stompArea" type="Area2D" parent="." unique_id=293259619]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1015783627]
-position = Vector2(0, -6)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ix520")
 
 [connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_entered"]
