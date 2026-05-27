@@ -1,7 +1,11 @@
 class_name BasicMoveComponent
 extends Node
 
-enum Directions {LEFT, RIGHT, NONE}
+enum Directions {
+	LEFT = -1, 
+	NONE = 0,
+	RIGHT = 1 
+}
 
 @export var initialDirection: Directions = Directions.RIGHT
 @export var flipOnWall: bool = 0
@@ -30,10 +34,5 @@ func tick(parent: CharacterBody2D, delta: float) -> void:
 		emit_signal("direction_changed", direction)
 		
 func setDirection(newDirection: Directions) -> void:
-	if newDirection == Directions.LEFT:
-		direction = -1
-	elif newDirection == Directions.RIGHT:
-		direction = 1
-	else:
-		direction = 0
+	direction = newDirection
 	
