@@ -28,7 +28,7 @@ func _change_direction(direction: int) -> void:
 
 func _on_hurt_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && alive):
-		emit_signal("damage_to_player", body)
+		damage_to_player.emit(body)
 		
 func _stomp() -> void:
 	alive = false;
