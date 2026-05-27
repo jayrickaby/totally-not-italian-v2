@@ -1,16 +1,18 @@
 extends CharacterBody2D
 
+const Directions = BasicMoveComponent.Directions
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
 
-@export var initiallySpinning: BasicMoveComponent.Directions = BasicMoveComponent.Directions.NONE
+@export var initiallySpinning: Directions = Directions.NONE
 var isSpinning: bool = false
 
 signal damage_to_player
 
 func _ready() -> void:
 	basic_move_component.setDirection(initiallySpinning)
-	if initiallySpinning != BasicMoveComponent.Directions.NONE:
+	if initiallySpinning != Directions.NONE:
 		isSpinning = true
  
 func _physics_process(delta: float) -> void:
@@ -29,4 +31,14 @@ func _on_hurt_area_entered(body: Node2D) -> void:
 func _on_interaction_area_entered(body: Node2D) -> void:
 	if !(body.name == "Player" and body.alive) or isSpinning:
 		return
+	
+	# Kick - prefer right when center
+	if body.global_position.x <= global_position.x:
+		_startSpinning(Directions.RIGHT)
+	elif body.global_position.x >= global_position.x:
+		_startSpinning(Directions.LEFT)
+		
+func _startSpinning(spinDirection: Directions) -> void:
+	basic_move_component.setDirection(spinDirection)
+	isSpinning = true
 	
