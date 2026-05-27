@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_detection_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive && body.keys.has(linkKeyId)):
-		call_deferred("destroy")
+		call_deferred("_destroy")
 		
-func destroy():
+func _destroy():
 	queue_free()

@@ -36,7 +36,7 @@ func _stomp() -> void:
 
 func _on_animation_looped() -> void:
 	if (animated_sprite_2d.animation == "stomped"):
-		call_deferred("die")
+		call_deferred("_die")
 	
-func die() -> void:
+func _die() -> void:
 	queue_free()

@@ -12,11 +12,11 @@ signal collected_by_player
 func _ready() -> void:
 	if !get_parent().name == "Keys":
 		print("Key in invalid space!")
-		call_deferred("destroy")
+		call_deferred("_destroy")
 		
 	if keyIds.has(id):
 		print("Duplicate Key '" + id + "'")
-		call_deferred("destroy")
+		call_deferred("_destroy")
 	else:
 		keyIds.append(id)
 	
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 func _on_collect_area_entered(body: Node2D) -> void:
 	if (body.name == "Player" && body.alive):
 		emit_signal("collected_by_player", body, id)
-		call_deferred("destroy")
+		call_deferred("_destroy")
 
-func destroy() -> void:
+func _destroy() -> void:
 	queue_free()

@@ -23,7 +23,7 @@ func _setup_level() -> void:
 			key.collected_by_player.connect(_key_collected_by_player)
 			
 func _on_player_damaged(body) -> void:
-	body.die()
+	body._die()
 
 func _key_collected_by_player(body,id) -> void:
 	body.keys.append(id)

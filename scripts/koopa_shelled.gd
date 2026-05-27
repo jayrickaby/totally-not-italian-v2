@@ -25,7 +25,7 @@ func _change_direction(direction: int) -> void:
 
 func _stomp() -> void:
 	alive = false
-	call_deferred("die")
+	call_deferred("_die")
 
-func die() -> void:
+func _die() -> void:
 	queue_free()
