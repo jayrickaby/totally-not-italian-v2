@@ -52,13 +52,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1jgw"]
-size = Vector2(10, 6)
+size = Vector2(8, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgpj4"]
 size = Vector2(14, 10)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3hfl1"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0j8n"]
+size = Vector2(14, 16)
 
 [node name="Goomba" type="CharacterBody2D" unique_id=1232104842 node_paths=PackedStringArray("hurt_area")]
 collision_layer = 4
@@ -75,7 +75,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1918724991]
-position = Vector2(0, 5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_s1jgw")
 
 [node name="stompArea" type="Area2D" parent="." unique_id=613148146]
@@ -87,7 +87,7 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_fgpj4")
 
 [node name="collisionArea" type="CollisionShape2D" parent="." unique_id=1648754468]
-shape = SubResource("CircleShape2D_3hfl1")
+shape = SubResource("RectangleShape2D_l0j8n")
 
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_fgpj4")]
 flipOnWall = true

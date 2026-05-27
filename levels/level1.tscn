@@ -55,7 +55,7 @@ position = Vector2(208, -8)
 position = Vector2(336, -16)
 
 [node name="Koopa Shell" parent="Enemies" unique_id=937446504 instance=ExtResource("7_8hd6v")]
-position = Vector2(88, -136)
+position = Vector2(272, -32)
 
 [node name="Keys" type="Node2D" parent="." unique_id=437584801]
 
