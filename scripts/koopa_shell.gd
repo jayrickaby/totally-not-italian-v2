@@ -16,6 +16,9 @@ func _ready() -> void:
 		isSpinning = true
  
 func _physics_process(delta: float) -> void:
+	if !alive:
+		return
+		
 	basic_move_component.tick(self, delta)
 	
 	if velocity.x > 1 or velocity.x < -1:
@@ -24,21 +27,33 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.animation = "idle"
 		
 func _on_interaction_area_entered(body: Node2D) -> void:
-	if !(body.name == "Player" and body.alive) or isSpinning:
+	if !alive:
+		return
+		
+	if !body.name == "Player" or !body.alive:
+		return
+		
+	if isSpinning:
 		return
 	
 	# Kick - prefer right when center
 	if body.global_position.x <= global_position.x:
-		_startSpinning(Directions.RIGHT)
+		_spin(Directions.RIGHT)
 	elif body.global_position.x >= global_position.x:
-		_startSpinning(Directions.LEFT)
+		_spin(Directions.LEFT)
 		
-func _startSpinning(spinDirection: Directions) -> void:
+func _spin(spinDirection: Directions) -> void:
 	basic_move_component.setDirection(spinDirection)
-	isSpinning = true
+	if spinDirection != Directions.NONE:
+		isSpinning = true
+	else:
+		isSpinning = false
 	
 func _stomp(player: Node2D) -> void:
 	if !alive:
 		return
+		
+	if isSpinning:
+		_spin(Directions.NONE)
 		
 	player.initiateJump()
