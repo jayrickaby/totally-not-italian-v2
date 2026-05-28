@@ -3,6 +3,7 @@ extends EnemyBase
 const Directions = BasicMoveComponent.Directions
 
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
+@onready var kickable_component: KickableComponent = $KickableComponent
 @onready var stompable_component: StompableComponent = $StompableComponent
 
 @export var initiallySpinning: Directions = Directions.NONE
@@ -10,6 +11,7 @@ var isSpinning: bool = false
 
 func _ready() -> void:
 	basic_move_component.setDirection(initiallySpinning)
+	kickable_component.kicked.connect(_kick)
 	stompable_component.stomped_by_player.connect(_stomp)
 	
 	if initiallySpinning != Directions.NONE:
@@ -26,21 +28,17 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite_2d.animation = "idle"
 		
-func _on_interaction_area_entered(body: Node2D) -> void:
+func _kick(kickedFrom: Directions) -> void:
 	if !alive:
 		return
-		
-	if !body.name == "Player" or !body.alive:
-		return
-		
 	if isSpinning:
 		return
 	
-	# Kick - prefer right when center
-	if body.global_position.x <= global_position.x:
-		_spin(Directions.RIGHT)
-	elif body.global_position.x >= global_position.x:
+	
+	if (kickedFrom == Directions.RIGHT):
 		_spin(Directions.LEFT)
+	else:
+		_spin(Directions.RIGHT)
 		
 func _spin(spinDirection: Directions) -> void:
 	basic_move_component.setDirection(spinDirection)
