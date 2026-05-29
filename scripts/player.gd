@@ -19,9 +19,11 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.animation = "jump"
 	elif velocity.x > 1 or velocity.x < -1:
 		animated_sprite_2d.animation = "walk"
-		animated_sprite_2d.flip_h = (direction == -1)
 	else:
 		animated_sprite_2d.animation = "idle"
+		
+	if direction:
+		animated_sprite_2d.flip_h = (direction == -1)
 	
 	# Add the gravity.
 	if not is_on_floor():
