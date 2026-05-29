@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwxejtqpy8u5o" path="res://scripts/koopa_shell.gd" id="1_eepnn"]
 [ext_resource type="Texture2D" uid="uid://bc1xdfinjgqgy" path="res://assets/textures/characters/enemies/sheet_koopa.png" id="1_tassc"]
 [ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="3_u5ec0"]
+[ext_resource type="PackedScene" uid="uid://dga354862knuj" path="res://scenes/shared/KickableComponent.tscn" id="4_ix520"]
 [ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="4_u5ec0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qukh7"]
@@ -56,14 +57,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tassc"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eepnn"]
-size = Vector2(18, 17)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ec0"]
 size = Vector2(12, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix520"]
-size = Vector2(18, 10)
+size = Vector2(18, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54cmn"]
+size = Vector2(18, 12)
 
 [node name="Koopa Shell" type="CharacterBody2D" unique_id=937446504 node_paths=PackedStringArray("hurt_area")]
 collision_layer = 4
@@ -83,20 +84,15 @@ initialDirection = 0
 flipOnWall = true
 speed = 150.0
 
+[node name="KickableComponent" parent="." unique_id=1888094789 node_paths=PackedStringArray("kickArea") instance=ExtResource("4_ix520")]
+kickArea = NodePath("../kickArea")
+
 [node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_u5ec0")]
 stompArea = NodePath("../stompArea")
 
-[node name="interactionArea" type="Area2D" parent="." unique_id=545468638]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="interactionArea" unique_id=829350535]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_eepnn")
-
 [node name="hurtArea" type="Area2D" parent="." unique_id=1117366271]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1849280872]
 position = Vector2(0, 2)
@@ -107,8 +103,16 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stompArea" unique_id=1015783627]
-position = Vector2(0, -4)
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_ix520")
 
-[connection signal="body_entered" from="interactionArea" to="." method="_on_interaction_area_entered"]
+[node name="kickArea" type="Area2D" parent="." unique_id=1606486204]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kickArea" unique_id=469225623]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_54cmn")
+
 [connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_entered"]
+[connection signal="body_entered" from="kickArea" to="." method="_on_kick_area_body_entered"]

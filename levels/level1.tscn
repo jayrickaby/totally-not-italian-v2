@@ -49,13 +49,13 @@ linkKeyId = "escape"
 [node name="Enemies" type="Node2D" parent="." unique_id=1869028390]
 
 [node name="Goomba" parent="Enemies" unique_id=1447049190 instance=ExtResource("3_b3oru")]
-position = Vector2(208, -8)
+position = Vector2(360, -11)
 
 [node name="Koopa Shelled" parent="Enemies" unique_id=559945683 instance=ExtResource("4_pdpul")]
 position = Vector2(336, -16)
 
 [node name="Koopa Shell" parent="Enemies" unique_id=937446504 instance=ExtResource("7_8hd6v")]
-position = Vector2(272, -32)
+position = Vector2(216, -14)
 
 [node name="Keys" type="Node2D" parent="." unique_id=437584801]
 
