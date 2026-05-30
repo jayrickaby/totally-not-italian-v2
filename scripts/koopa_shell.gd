@@ -63,9 +63,9 @@ func _on_kick_area_body_entered(body: Node2D) -> void:
 	var kickDir: Directions = Directions.NONE
 	
 	if body.global_position.x < global_position.x:
-		kickDir = Directions.RIGHT
-	elif body.global_position.x > global_position.x:
 		kickDir = Directions.LEFT
+	elif body.global_position.x > global_position.x:
+		kickDir = Directions.RIGHT
 	
 	if isSpinning and !body.is_on_floor():
 		_stomp(body)
