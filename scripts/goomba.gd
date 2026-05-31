@@ -3,9 +3,7 @@ extends EnemyBase
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
 @onready var stompable_component: StompableComponent = $StompableComponent
 
-func _ready() -> void:
-	super()
-	
+func _ready() -> void:	
 	basic_move_component.direction_changed.connect(_change_direction)
 	stompable_component.stomped_by_player.connect(_stomp)
 

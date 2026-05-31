@@ -51,3 +51,8 @@ func _die() -> void:
 	print("player died!")
 	alive = false;
 	queue_free()
+
+
+func _on_hurt_area_entered(body: Node2D) -> void:
+	# TODO Create HurtBox component so that only hurtArea signals are recieved and such
+	call_deferred("_die")

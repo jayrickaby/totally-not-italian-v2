@@ -14,8 +14,6 @@ var playerInStompArea: bool = false
 var isSpinning: bool = false
 
 func _ready() -> void:
-	super()
-	
 	if kickArea:
 		kickArea.body_entered.connect(_on_kick_area_entered)
 		
