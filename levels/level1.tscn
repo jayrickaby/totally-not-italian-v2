@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://n2h1ito80sbv" path="res://scenes/koopa_shelled.tscn" id="4_pdpul"]
 [ext_resource type="PackedScene" uid="uid://e0wyegifgus0" path="res://scenes/key.tscn" id="4_ua5ty"]
 [ext_resource type="PackedScene" uid="uid://x40g1dntin72" path="res://scenes/door.tscn" id="5_61w3m"]
-[ext_resource type="PackedScene" uid="uid://d2sw6xuqquagv" path="res://scenes/koopa_shell.tscn" id="7_8hd6v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdtm5"]
 texture = ExtResource("1_sjb42")
@@ -52,10 +51,7 @@ linkKeyId = "escape"
 position = Vector2(360, -11)
 
 [node name="Koopa Shelled" parent="Enemies" unique_id=559945683 instance=ExtResource("4_pdpul")]
-position = Vector2(336, -16)
-
-[node name="Koopa Shell" parent="Enemies" unique_id=937446504 instance=ExtResource("7_8hd6v")]
-position = Vector2(216, -14)
+position = Vector2(216, -19)
 
 [node name="Keys" type="Node2D" parent="." unique_id=437584801]
 

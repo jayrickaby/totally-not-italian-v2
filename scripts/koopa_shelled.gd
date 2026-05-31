@@ -2,6 +2,7 @@ extends EnemyBase
 
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
 @onready var stompable_component: StompableComponent = $StompableComponent
+const KOOPA_SHELL = preload("uid://d2sw6xuqquagv")
 
 func _ready() -> void:
 	super()
@@ -21,6 +22,14 @@ func _stomp(player: Node2D) -> void:
 		
 	alive = false
 	player.initiateJump()
+	call_deferred("_createShell")
 	call_deferred("_die")
+	
+func _createShell() -> void:
+	var ShellNode = KOOPA_SHELL.instantiate()
+	add_sibling(ShellNode)
+	ShellNode.global_position = global_position
+	ShellNode.playerInStompArea = true
+
 	
 	

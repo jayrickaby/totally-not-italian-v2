@@ -64,6 +64,10 @@ func _stomp(player: Node2D) -> void:
 	
 	
 func _enterStomp(body: Node2D) -> void:
+	if playerInStompArea == true:
+		# Early exit incase the player stomped parent (e.g. Koopa)
+		return
+		
 	_stomp(body)
 	playerInStompArea = true
 	
