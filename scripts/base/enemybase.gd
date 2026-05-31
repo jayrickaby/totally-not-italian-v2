@@ -13,8 +13,9 @@ func _ready() -> void:
 		hurt_area.body_entered.connect(_on_hurt_area_entered)
 
 func _on_hurt_area_entered(body: Node2D) -> void:
+	print("entered hurt area ", body.name, name)
 	if body.name == "Player" and body.alive and alive:
-		print("die")
+		print("emitted player damage signal")
 		damage_to_player.emit(body)
 
 func _change_direction(direction: int) -> void:

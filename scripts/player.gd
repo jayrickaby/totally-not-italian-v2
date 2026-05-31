@@ -48,5 +48,6 @@ func _jump() -> void:
 	velocity.y = JUMP_VELOCITY	
 	
 func _die() -> void:
+	print("player died!")
 	alive = false;
 	queue_free()

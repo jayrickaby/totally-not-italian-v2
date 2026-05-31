@@ -1,6 +1,5 @@
 extends Node2D
 
-
 func _ready() -> void:
 	_setup_level()
 
@@ -16,7 +15,7 @@ func _setup_level() -> void:
 			key.collected_by_player.connect(_key_collected_by_player)
 			
 func _on_player_damaged(body) -> void:
-	print("die")
+	print("recieved player damage signal")
 	body._die()
 
 func _key_collected_by_player(body,id) -> void:
