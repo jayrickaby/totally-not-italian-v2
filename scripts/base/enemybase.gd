@@ -14,6 +14,7 @@ func _ready() -> void:
 
 func _on_hurt_area_entered(body: Node2D) -> void:
 	if body.name == "Player" and body.alive and alive:
+		print("die")
 		damage_to_player.emit(body)
 
 func _change_direction(direction: int) -> void:

@@ -60,6 +60,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(13, 21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(8, 13)
+
 [node name="Player" type="CharacterBody2D" unique_id=1492178481]
 collision_layer = 2
 script = ExtResource("1_g2els")
@@ -77,3 +80,11 @@ stream = ExtResource("3_qhqgy")
 [node name="collisionArea" type="CollisionShape2D" parent="." unique_id=207601354]
 position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="hurtArea" type="Area2D" parent="." unique_id=114185459]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1169404640]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_dqkch")

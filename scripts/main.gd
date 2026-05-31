@@ -1,15 +1,8 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_setup_level()
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _setup_level() -> void:
 	var enemies = $level.get_node_or_null("Enemies")
@@ -23,6 +16,7 @@ func _setup_level() -> void:
 			key.collected_by_player.connect(_key_collected_by_player)
 			
 func _on_player_damaged(body) -> void:
+	print("die")
 	body._die()
 
 func _key_collected_by_player(body,id) -> void:
