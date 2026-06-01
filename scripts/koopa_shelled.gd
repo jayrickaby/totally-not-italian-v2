@@ -4,7 +4,7 @@ extends EnemyBase
 @onready var stompable_component: StompableComponent = $StompableComponent
 const KOOPA_SHELL = preload("uid://d2sw6xuqquagv")
 
-func _ready() -> void:dd
+func _ready() -> void:
 	basic_move_component.direction_changed.connect(_change_direction)
 	stompable_component.stomped_by_player.connect(_stomp)
 
