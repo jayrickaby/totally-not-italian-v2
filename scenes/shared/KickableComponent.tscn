@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dga354862knuj"]
-
-[ext_resource type="Script" uid="uid://bubcu0gmaeynm" path="res://scripts/shared/shell_component.gd" id="1_mvai0"]
-
-[node name="KickableComponent" type="Node" unique_id=1888094789]
-script = ExtResource("1_mvai0")
