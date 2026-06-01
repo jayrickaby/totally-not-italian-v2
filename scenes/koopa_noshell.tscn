@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dttvbhkdn5hgm"]
+
+[ext_resource type="Texture2D" uid="uid://bc1xdfinjgqgy" path="res://assets/textures/characters/enemies/sheet_koopa.png" id="1_0nv4s"]
+[ext_resource type="Script" uid="uid://bnwcnqjpkv78" path="res://scripts/koopa_noshell.gd" id="1_fx4qs"]
+[ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="2_lyy7u"]
+[ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="3_fx4qs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gafri"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyy7u"]
+atlas = ExtResource("1_0nv4s")
+region = Rect2(160, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx4qs"]
+atlas = ExtResource("1_0nv4s")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umpns"]
+atlas = ExtResource("1_0nv4s")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb2ur"]
+atlas = ExtResource("1_0nv4s")
+region = Rect2(160, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f82jn"]
+atlas = ExtResource("1_0nv4s")
+region = Rect2(176, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af011"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyy7u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx4qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umpns")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb2ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f82jn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[node name="Koopa Shell-less" type="CharacterBody2D" unique_id=41152110]
+collision_layer = 4
+script = ExtResource("1_fx4qs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=194567749]
+shape = SubResource("RectangleShape2D_gafri")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=570960244]
+sprite_frames = SubResource("SpriteFrames_af011")
+animation = &"walk"
+frame_progress = 0.22064619
+
+[node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("2_lyy7u")]
+flipOnWall = true
+speed = 20.0
+
+[node name="StompableComponent" parent="." unique_id=417670950 instance=ExtResource("3_fx4qs")]

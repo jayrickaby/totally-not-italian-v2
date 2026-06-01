@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bobsku5p63l4c" path="res://assets/textures/tilesets/dev_white.png" id="1_sjb42"]
 [ext_resource type="PackedScene" uid="uid://b2qfao7fn373c" path="res://scenes/player.tscn" id="2_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://p6us43k1j2ua" path="res://scenes/goomba.tscn" id="3_b3oru"]
-[ext_resource type="PackedScene" uid="uid://n2h1ito80sbv" path="res://scenes/koopa_shelled.tscn" id="4_pdpul"]
 [ext_resource type="PackedScene" uid="uid://e0wyegifgus0" path="res://scenes/key.tscn" id="4_ua5ty"]
 [ext_resource type="PackedScene" uid="uid://x40g1dntin72" path="res://scenes/door.tscn" id="5_61w3m"]
+[ext_resource type="PackedScene" uid="uid://dttvbhkdn5hgm" path="res://scenes/koopa_noshell.tscn" id="6_pdpul"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdtm5"]
 texture = ExtResource("1_sjb42")
@@ -50,11 +50,11 @@ linkKeyId = "escape"
 [node name="Goomba" parent="Enemies" unique_id=1447049190 instance=ExtResource("3_b3oru")]
 position = Vector2(360, -11)
 
-[node name="Koopa Shelled" parent="Enemies" unique_id=559945683 instance=ExtResource("4_pdpul")]
-position = Vector2(216, -19)
-
 [node name="Keys" type="Node2D" parent="." unique_id=437584801]
 
 [node name="escape_key" parent="Keys" unique_id=810182334 instance=ExtResource("4_ua5ty")]
 position = Vector2(72, -192)
 id = "escape"
+
+[node name="Koopa Shell-less" parent="." unique_id=41152110 instance=ExtResource("6_pdpul")]
+position = Vector2(208, -8)
