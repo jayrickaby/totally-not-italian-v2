@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bnwcnqjpkv78" path="res://scripts/koopa_noshell.gd" id="1_fx4qs"]
 [ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="2_lyy7u"]
 [ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="3_fx4qs"]
+[ext_resource type="PackedScene" uid="uid://dsx5y434kvqk6" path="res://scenes/shared/DamageComponent.tscn" id="4_umpns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gafri"]
 size = Vector2(16, 16)
@@ -61,6 +62,9 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umpns"]
+size = Vector2(10, 6)
+
 [node name="Koopa Shell-less" type="CharacterBody2D" unique_id=41152110]
 collision_layer = 4
 script = ExtResource("1_fx4qs")
@@ -77,4 +81,15 @@ frame_progress = 0.22064619
 flipOnWall = true
 speed = 20.0
 
+[node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("damageArea") instance=ExtResource("4_umpns")]
+damageArea = NodePath("../damageArea")
+
 [node name="StompableComponent" parent="." unique_id=417670950 instance=ExtResource("3_fx4qs")]
+
+[node name="damageArea" type="Area2D" parent="." unique_id=1355491654]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea" unique_id=1488938518]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_umpns")

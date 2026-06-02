@@ -2,7 +2,6 @@ class_name EnemyBase
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@export var hurt_area: Area2D
 
 var alive: bool = true
 

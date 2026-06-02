@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://dsx5y434kvqk6"]
-
-[ext_resource type="Script" uid="uid://d0m3vb21pvqgx" path="res://scripts/shared/hurt_box_component.gd" id="1_54ueb"]
-
-[node name="HurtBoxComponent" type="Node" unique_id=72956151]
-script = ExtResource("1_54ueb")
-
-[node name="Timer" type="Timer" parent="." unique_id=891771332]

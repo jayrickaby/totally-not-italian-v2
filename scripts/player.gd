@@ -5,7 +5,8 @@ extends CharacterBody2D
 const SPEED = 50.0
 const JUMP_VELOCITY = -250.0
 var keys = []
-var alive = true;
+var health: int = 1;
+var alive: bool = true;
 
 func _physics_process(delta: float) -> void:
 	if !alive:
@@ -47,12 +48,14 @@ func initiateJump()	:
 func _jump() -> void:
 	velocity.y = JUMP_VELOCITY	
 	
+func damage(amt: int) -> void:
+	health -= amt
+	
+	if health <= 0:
+		alive = false
+		call_deferred("_die")
+	
+	
 func _die() -> void:
 	print("player died!")
-	alive = false;
 	queue_free()
-
-
-func _on_hurt_area_entered(body: Node2D) -> void:
-	# TODO Create HurtBox component so that only hurtArea signals are recieved and such
-	call_deferred("_die")
