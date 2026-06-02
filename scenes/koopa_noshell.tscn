@@ -63,7 +63,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_umpns"]
-size = Vector2(10, 6)
+size = Vector2(10, 10)
 
 [node name="Koopa Shell-less" type="CharacterBody2D" unique_id=41152110]
 collision_layer = 4
@@ -81,14 +81,14 @@ frame_progress = 0.22064619
 flipOnWall = true
 speed = 20.0
 
-[node name="DamageComponent" parent="." unique_id=72956151 instance=ExtResource("4_umpns")]
+[node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("hitbox") instance=ExtResource("4_umpns")]
+hitbox = NodePath("../hitbox")
 
 [node name="StompableComponent" parent="." unique_id=417670950 instance=ExtResource("3_fx4qs")]
 
-[node name="damageArea" type="Area2D" parent="." unique_id=1355491654]
+[node name="hitbox" type="Area2D" parent="." unique_id=1355491654]
 collision_layer = 64
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea" unique_id=1488938518]
-position = Vector2(0, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1488938518]
 shape = SubResource("RectangleShape2D_umpns")

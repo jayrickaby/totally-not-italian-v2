@@ -71,8 +71,8 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="hitbox" type="Area2D" parent="." unique_id=103488973]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 64
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1918724991]
 position = Vector2(0, 0.5)

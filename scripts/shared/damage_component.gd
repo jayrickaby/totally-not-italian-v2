@@ -7,14 +7,16 @@ extends Node
 
 func _ready() -> void:
 	if hitbox:
-		hitbox.body_entered.connect(_on_hitbox_entered)
+		hitbox.area_entered.connect(_on_hitbox_entered)
 		
-func _on_hitbox_entered(player: Player) -> void:
-	if !(player.isAlive()):
-		return
-		
+func _on_hitbox_entered(area: Area2D) -> void:				
 	if disabled:
 		return
+		
+	var player: Player = area.get_parent()
+		
+	if !(player.isAlive()):
+		return	
 		
 	_damage(player)
 		
