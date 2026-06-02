@@ -3,6 +3,7 @@ extends EnemyBase
 @onready var basic_move_component: BasicMoveComponent = $BasicMoveComponent
 @onready var stompable_component: StompableComponent = $StompableComponent
 const KOOPA_SHELL = preload("uid://d2sw6xuqquagv")
+const KOOPA_NOSHELL = preload("uid://dttvbhkdn5hgm")
 
 func _ready() -> void:
 	basic_move_component.direction_changed.connect(_change_direction)
@@ -28,6 +29,10 @@ func _createShell() -> void:
 	add_sibling(ShellNode)
 	ShellNode.global_position = global_position
 	ShellNode.playerInStompArea = true
+	
+	var NakedKoopaNode = KOOPA_NOSHELL.instantiate()
+	add_sibling(NakedKoopaNode)
+	NakedKoopaNode.global_position = global_position
 
 	
 	

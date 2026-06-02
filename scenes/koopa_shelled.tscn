@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c1frejc5r363t" path="res://scripts/koopa_shelled.gd" id="1_gkh4f"]
 [ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="3_311ub"]
 [ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="4_ccsrb"]
+[ext_resource type="PackedScene" uid="uid://dsx5y434kvqk6" path="res://scenes/shared/DamageComponent.tscn" id="4_kqkje"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gkh4f"]
 atlas = ExtResource("1_e5i7p")
@@ -36,10 +37,9 @@ size = Vector2(16, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqkje"]
 size = Vector2(12, 10)
 
-[node name="Koopa Shelled" type="CharacterBody2D" unique_id=559945683 node_paths=PackedStringArray("hurt_area")]
+[node name="Koopa Shelled" type="CharacterBody2D" unique_id=559945683]
 collision_layer = 4
 script = ExtResource("1_gkh4f")
-hurt_area = NodePath("hurtArea")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2077530489]
 sprite_frames = SubResource("SpriteFrames_ccsrb")
@@ -54,6 +54,9 @@ shape = SubResource("RectangleShape2D_e5i7p")
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_311ub")]
 flipOnWall = true
 speed = 20.0
+
+[node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("damageArea") instance=ExtResource("4_kqkje")]
+damageArea = NodePath("../hurtArea")
 
 [node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_ccsrb")]
 stompArea = NodePath("../stompArea")
