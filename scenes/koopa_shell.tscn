@@ -86,16 +86,17 @@ initialDirection = 0
 flipOnWall = true
 speed = 150.0
 
-[node name="DamageComponent" parent="." unique_id=72956151 instance=ExtResource("4_ix520")]
+[node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("hitbox") instance=ExtResource("4_ix520")]
+hitbox = NodePath("../hitbox")
 
 [node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_u5ec0")]
 stompArea = NodePath("../stompArea")
 
-[node name="hurtArea" type="Area2D" parent="." unique_id=1117366271]
+[node name="hitbox" type="Area2D" parent="." unique_id=1117366271]
 collision_layer = 64
-collision_mask = 96
+collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea" unique_id=1849280872]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1849280872]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_u5ec0")
 
