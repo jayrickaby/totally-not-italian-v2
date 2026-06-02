@@ -91,7 +91,7 @@ shape = SubResource("RectangleShape2D_l0j8n")
 
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_fgpj4")]
 flipOnWall = true
-speed = 25.0
+speed = 20.0
 
 [node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_l0j8n")]
 stompArea = NodePath("../stompArea")
