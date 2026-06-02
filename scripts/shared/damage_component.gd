@@ -3,6 +3,7 @@ extends Node
 
 @export var damageArea: Area2D
 @export var damage: int = 1
+@export var disabled: bool = false
 
 var playerInDamageArea: bool = false
 
@@ -14,6 +15,8 @@ func _on_damage_area_entered(body: Node2D) -> void:
 	if !(body.name == "Player" and body.alive):
 		return
 		
+	if disabled:
+		return
 	# playerInDamageArea = true
 		
 	_damage(body)
