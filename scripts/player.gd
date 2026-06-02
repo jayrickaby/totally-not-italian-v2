@@ -1,15 +1,17 @@
+class_name Player
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var snd_jump: AudioStreamPlayer2D = $snd_jump
+@onready var health_component: HealthComponent = $HealthComponent
+
+const HealthStates = HealthComponent.HealthStates
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -250.0
 var keys = []
-var health: int = 1;
-var alive: bool = true;
 
 func _physics_process(delta: float) -> void:
-	if !alive:
+	if !isAlive():
 		return
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -48,13 +50,11 @@ func initiateJump()	:
 func _jump() -> void:
 	velocity.y = JUMP_VELOCITY	
 	
-func damage(amt: int) -> void:
-	health -= amt
-	
-	if health <= 0:
-		alive = false
-		call_deferred("_die")
-	
+func getHealthState() -> HealthStates: 
+	return health_component.state	
+
+func isAlive() -> bool:
+	return getHealthState() == HealthStates.Alive
 	
 func _die() -> void:
 	print("player died!")

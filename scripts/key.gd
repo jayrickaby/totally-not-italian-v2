@@ -32,9 +32,9 @@ func _physics_process(delta: float) -> void:
 	
 
 
-func _on_collect_area_entered(body: Node2D) -> void:
-	if (body.name == "Player" && body.alive):
-		collected_by_player.emit(body, id)
+func _on_collect_area_entered(player: Player) -> void:
+	if (player.isAlive()):
+		collected_by_player.emit(player, id)
 		call_deferred("_destroy")
 
 func _destroy() -> void:

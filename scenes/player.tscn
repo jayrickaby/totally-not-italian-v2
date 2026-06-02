@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8uopp617ko3h" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bwhbb7yc3glqh" path="res://assets/textures/characters/john/sheet_john_main.png" id="1_wtcfe"]
 [ext_resource type="AudioStream" uid="uid://durt2avcby7xj" path="res://assets/sounds/john_jump.ogg" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://drds8w4dkj2pu" path="res://scenes/shared/HealthComponent.tscn" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e48y"]
 atlas = ExtResource("1_wtcfe")
@@ -82,10 +83,12 @@ position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=114185459]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 32
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1169404640]
 shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="HealthComponent" parent="." unique_id=1406301852 instance=ExtResource("4_dqkch")]
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hurt_area_entered"]

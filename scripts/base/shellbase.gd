@@ -21,14 +21,14 @@ func _ready() -> void:
 		stompable_component.stomped_by_player.connect(_enterStomp)
 		stompable_component.player_stopped_stomping.connect(_exitStomp)
 		
-func _on_kick_area_entered(body: Node2D) -> void:
-	if !(body.name == "Player" and body.alive):
+func _on_kick_area_entered(player: Player) -> void:
+	if !player.isAlive():
 		return
 		
 	if playerInStompArea and !isSpinning:
 		return
 	
-	call_deferred("_kick", body)
+	call_deferred("_kick", player)
 	
 func _kick(player: Node2D) -> void:	
 	var kickTo: Directions = Directions.NONE
@@ -49,8 +49,8 @@ func _spin(spinTo: Directions) -> void:
 	else: 
 		isSpinning = false
 		
-func _stomp(player: Node2D) -> void:
-	if !(player.name == "Player" and player.alive):
+func _stomp(player: Player) -> void:
+	if !player.isAlive():
 		return
 		
 	player.initiateJump()
