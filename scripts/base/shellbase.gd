@@ -25,7 +25,7 @@ func _on_kick_area_entered(player: Player) -> void:
 	if !player.isAlive():
 		return
 		
-	if playerInStompArea and !isSpinning:
+	if playerInStompArea or isSpinning:
 		return
 	
 	call_deferred("_kick", player)
