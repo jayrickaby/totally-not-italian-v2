@@ -10,6 +10,9 @@ const SPEED = 50.0
 const JUMP_VELOCITY = -250.0
 var keys = []
 
+func _ready() -> void:
+	health_component.died.connect(_die)
+
 func _physics_process(delta: float) -> void:
 	if !isAlive():
 		return
