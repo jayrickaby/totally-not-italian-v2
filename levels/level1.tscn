@@ -43,12 +43,12 @@ position = Vector2(160, -40)
 [node name="Enemies" type="Node2D" parent="." unique_id=1869028390]
 
 [node name="Goomba" parent="Enemies" unique_id=1447049190 instance=ExtResource("3_b3oru")]
-position = Vector2(360, -11)
+position = Vector2(200, -19)
 
 [node name="Keys" type="Node2D" parent="." unique_id=437584801]
 
 [node name="Koopa Shelled" parent="." unique_id=559945683 instance=ExtResource("6_pdpul")]
-position = Vector2(224, -32)
+position = Vector2(352, -40)
 
 [node name="Koopa Shell" parent="." unique_id=937446504 instance=ExtResource("5_61w3m")]
 position = Vector2(104, -8)
