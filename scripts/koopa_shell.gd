@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		animated_sprite_2d.animation = "idle"
 		
-	if !isSpinning:
-		damage_component.disabled = true
+	if isSpinning:
+		damage_component.enabled = true
 	else:
-		damage_component.disabled = false
+		damage_component.enabled = false
