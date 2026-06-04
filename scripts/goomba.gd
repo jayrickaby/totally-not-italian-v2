@@ -13,7 +13,7 @@ func _ready() -> void:
 	health_component.died.connect(_die)
 
 func _physics_process(delta: float) -> void:	
-	if health_component.state == HealthStates.Dead:
+	if health_component.state != HealthStates.Alive:
 		return
 	
 	basic_move_component.tick(self, delta)
@@ -27,20 +27,14 @@ func _change_direction(direction: int) -> void:
 	animated_sprite_2d.flip_h = (direction == -1)
 		
 func _stomp(player: Node2D) -> void:
-	if health_component.state == HealthStates.Dead:
+	if health_component.state != HealthStates.Alive:
 		return
 	
 	deathWaitForAnimation = true
 	animated_sprite_2d.animation = "stomped"
 	player.initiateJump()
 	health_component.die()
-
-func _on_animation_looped() -> void:
+	
+func _on_animation_finished() -> void:
 	if (animated_sprite_2d.animation == "stomped"):
-		deathWaitForAnimation = false
-		call_deferred("_die")
-		
-func _die() -> void:
-	if !deathWaitForAnimation:
-		super()
-		
+		health_component.destroy()

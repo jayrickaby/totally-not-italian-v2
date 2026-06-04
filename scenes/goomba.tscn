@@ -37,7 +37,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5lml2")
 }],
-"loop": true,
+"loop": false,
 "name": &"stomped",
 "speed": 1.0
 }, {
@@ -68,7 +68,7 @@ script = ExtResource("1_s1jgw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1872486879]
 sprite_frames = SubResource("SpriteFrames_5lml2")
-animation = &"idle"
+animation = &"stomped"
 autoplay = "idle"
 
 [node name="hitbox" type="Area2D" parent="." unique_id=103488973]
@@ -102,5 +102,5 @@ stompArea = NodePath("../stompArea")
 [node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("hitbox") instance=ExtResource("5_5lml2")]
 hitbox = NodePath("../hitbox")
 
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animation_looped"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="stompArea" to="." method="_on_stomp_area_entered"]

@@ -3,6 +3,7 @@ extends Node
 
 enum HealthStates {
 	Alive,
+	Dying,		# Still present but doesn't functionally exist (i.e. death animations)
 	Dead
 }
 
@@ -12,7 +13,8 @@ enum HealthStates {
 var state: HealthStates
 
 signal damaged(amount: int)
-signal died()
+signal dying
+signal died
 
 func _ready() -> void:
 	state = initialState
@@ -23,11 +25,20 @@ func damage(amount: int) -> void:
 	
 	if health <= 0:
 		die()
-		
+	
 func die() -> void:
-	if state == HealthStates.Dead:
+	if state == HealthStates.Dying: 
+		# Don't want repeat of signal
 		return
-		
-	health = 0
+	
+	state = HealthStates.Dying
+	dying.emit()
+
+func destroy() -> void:
+	if state == HealthStates.Dead:
+		# Don't want repeat of signal
+		return
+
 	state = HealthStates.Dead
-	died.emit()
+	health = 0
+	died.emit()	
