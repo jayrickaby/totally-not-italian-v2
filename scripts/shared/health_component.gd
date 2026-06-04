@@ -22,5 +22,12 @@ func damage(amount: int) -> void:
 	damaged.emit(amount)
 	
 	if health <= 0:
-		state = HealthStates.Dead
-		died.emit()
+		die()
+		
+func die() -> void:
+	if state == HealthStates.Dead:
+		return
+		
+	health = 0
+	state = HealthStates.Dead
+	died.emit()

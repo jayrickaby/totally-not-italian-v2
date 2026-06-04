@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d2yanbv1o2dx1" path="res://assets/textures/characters/enemies/sheet_goomba.png" id="1_21hcc"]
 [ext_resource type="Script" uid="uid://dwpx12xi4tb1p" path="res://scripts/goomba.gd" id="1_s1jgw"]
 [ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="3_fgpj4"]
+[ext_resource type="PackedScene" uid="uid://drds8w4dkj2pu" path="res://scenes/shared/HealthComponent.tscn" id="4_3hfl1"]
 [ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="4_l0j8n"]
 [ext_resource type="PackedScene" uid="uid://dsx5y434kvqk6" path="res://scenes/shared/DamageComponent.tscn" id="5_5lml2"]
 
@@ -92,6 +93,8 @@ shape = SubResource("RectangleShape2D_l0j8n")
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("3_fgpj4")]
 flipOnWall = true
 speed = 20.0
+
+[node name="HealthComponent" parent="." unique_id=1406301852 instance=ExtResource("4_3hfl1")]
 
 [node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_l0j8n")]
 stompArea = NodePath("../stompArea")

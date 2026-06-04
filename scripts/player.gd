@@ -60,5 +60,4 @@ func isAlive() -> bool:
 	return getHealthState() == HealthStates.Alive
 	
 func _die() -> void:
-	print("player died!")
 	queue_free()
