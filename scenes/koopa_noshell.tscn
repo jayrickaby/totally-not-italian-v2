@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfs7jw5ci1532" path="res://scenes/shared/BasicMoveComponent.tscn" id="2_lyy7u"]
 [ext_resource type="PackedScene" uid="uid://d03tffiiyyx8a" path="res://scenes/shared/StompableComponent.tscn" id="3_fx4qs"]
 [ext_resource type="PackedScene" uid="uid://dsx5y434kvqk6" path="res://scenes/shared/DamageComponent.tscn" id="4_umpns"]
+[ext_resource type="PackedScene" uid="uid://drds8w4dkj2pu" path="res://scenes/shared/HealthComponent.tscn" id="5_fb2ur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gafri"]
 size = Vector2(16, 16)
@@ -75,7 +76,8 @@ shape = SubResource("RectangleShape2D_gafri")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=570960244]
 sprite_frames = SubResource("SpriteFrames_af011")
 animation = &"walk"
-frame_progress = 0.22064619
+autoplay = "idle"
+frame_progress = 0.34486574
 
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("2_lyy7u")]
 flipOnWall = true
@@ -83,6 +85,8 @@ speed = 20.0
 
 [node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("hitbox") instance=ExtResource("4_umpns")]
 hitbox = NodePath("../hitbox")
+
+[node name="HealthComponent" parent="." unique_id=1406301852 instance=ExtResource("5_fb2ur")]
 
 [node name="StompableComponent" parent="." unique_id=417670950 instance=ExtResource("3_fx4qs")]
 
