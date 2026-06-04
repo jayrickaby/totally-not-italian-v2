@@ -11,6 +11,7 @@ enum Directions {
 @export var flipOnWall: bool = false
 @export var gravityScale: float = 1
 @export var speed: float = 100
+@export var enabled: bool = true
 var direction: int
 
 signal direction_changed
@@ -19,6 +20,9 @@ func _ready() -> void:
 	setDirection(initialDirection)
 
 func tick(parent: CharacterBody2D, delta: float) -> void:
+	if !enabled:
+		return
+		
 	# X DIRECTION
 	if parent.is_on_wall() && flipOnWall:
 		flipDirection()

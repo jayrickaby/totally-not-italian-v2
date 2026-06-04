@@ -9,6 +9,7 @@ enum HealthStates {
 
 @export var health: int = 1
 @export var initialState: HealthStates = HealthStates.Alive
+@export var enabled: bool = true
 
 var state: HealthStates
 
@@ -20,6 +21,9 @@ func _ready() -> void:
 	state = initialState
 
 func damage(amount: int) -> void:
+	if !enabled:
+		return
+		
 	health -= amount
 	damaged.emit(amount)
 	
@@ -27,6 +31,9 @@ func damage(amount: int) -> void:
 		die()
 	
 func die() -> void:
+	if !enabled:
+		return
+		
 	if state == HealthStates.Dying: 
 		# Don't want repeat of signal
 		return
@@ -35,6 +42,9 @@ func die() -> void:
 	dying.emit()
 
 func destroy() -> void:
+	if !enabled:
+		return
+	
 	if state == HealthStates.Dead:
 		# Don't want repeat of signal
 		return
