@@ -10,6 +10,7 @@ const HealthStates = HealthComponent.HealthStates
 func _ready() -> void:	
 	basic_move_component.direction_changed.connect(_change_direction)
 	stompable_component.stomped_by_player.connect(_stomp)
+	health_component.dying.connect(_on_dying)
 	health_component.died.connect(_die)
 
 func _physics_process(delta: float) -> void:	
@@ -32,11 +33,10 @@ func _stomp(player: Node2D) -> void:
 	
 	animated_sprite_2d.animation = "stomped"
 	player.initiateJump()
-	_startDying()
-	
-func _startDying() -> void:
-	damage_component.enabled = false
 	health_component.die()
+		
+func _on_dying() -> void:
+	damage_component.enabled = false
 	
 func _on_animation_finished() -> void:
 	if (animated_sprite_2d.animation == "stomped"):
