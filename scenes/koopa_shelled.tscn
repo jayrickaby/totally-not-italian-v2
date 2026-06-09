@@ -57,6 +57,7 @@ speed = 20.0
 
 [node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("hitbox") instance=ExtResource("4_kqkje")]
 hitbox = NodePath("../hitbox")
+damage = 0
 
 [node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("4_ccsrb")]
 stompArea = NodePath("../stompArea")

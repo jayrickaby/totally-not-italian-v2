@@ -22,6 +22,10 @@ region = Rect2(128, 16, 16, 16)
 atlas = ExtResource("1_0nv4s")
 region = Rect2(144, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_af011"]
+atlas = ExtResource("1_0nv4s")
+region = Rect2(208, 16, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_fb2ur"]
 atlas = ExtResource("1_0nv4s")
 region = Rect2(160, 16, 16, 16)
@@ -53,6 +57,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_af011")
+}],
+"loop": false,
+"name": &"stomped",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fb2ur")
 }, {
 "duration": 1.0,
@@ -75,9 +87,8 @@ shape = SubResource("RectangleShape2D_gafri")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=570960244]
 sprite_frames = SubResource("SpriteFrames_af011")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.34486574
 
 [node name="BasicMoveComponent" parent="." unique_id=263495506 instance=ExtResource("2_lyy7u")]
 flipOnWall = true
@@ -85,10 +96,12 @@ speed = 20.0
 
 [node name="DamageComponent" parent="." unique_id=72956151 node_paths=PackedStringArray("hitbox") instance=ExtResource("4_umpns")]
 hitbox = NodePath("../hitbox")
+damage = 0
 
 [node name="HealthComponent" parent="." unique_id=1406301852 instance=ExtResource("5_fb2ur")]
 
-[node name="StompableComponent" parent="." unique_id=417670950 instance=ExtResource("3_fx4qs")]
+[node name="StompableComponent" parent="." unique_id=417670950 node_paths=PackedStringArray("stompArea") instance=ExtResource("3_fx4qs")]
+stompArea = NodePath("../hitbox")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1355491654]
 collision_layer = 64
