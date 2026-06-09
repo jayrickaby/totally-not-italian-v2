@@ -21,6 +21,7 @@ func _on_hitbox_entered(area: Area2D) -> void:
 	_damage(player)
 		
 func _damage(player: Player) -> void:
+	print("Damage from: ", get_parent(), " with: ", damage)
 	if player.health_component:
 		player.health_component.damage(damage)
 		 
